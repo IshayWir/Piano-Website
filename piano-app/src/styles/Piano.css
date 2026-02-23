@@ -77,17 +77,3 @@
     height: 82px;
   }
 }
-```
-
----
-
-### How Black Key Positioning Works
-
-This is the trickiest CSS part. Black keys can't just be in the normal flow — they need to physically overlap adjacent white keys. The approach:
-
-Each white key is wrapped in a `.white-key-slot` div with `position: relative`. When a white key has a black key to its right, that black key is rendered **inside the same slot** as an `absolute`-positioned child, offset to the right edge of the white key:
-```
-[C slot         ] [D slot         ] [E slot  ]
- [C white key   ]  [D white key   ]  [E white ]
-              [C# black]        [D# black]
-              ^absolute, right-offset inside C slot
